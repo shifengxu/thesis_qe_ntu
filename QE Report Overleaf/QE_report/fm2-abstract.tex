@@ -1,0 +1,9 @@
+\chapter* {Abstract}
+\addcontentsline{toc}{section}{\numberline{}\hspace{-0.35in}{\bf Abstract}}
+% Add the Abstract to the table of contents using the specified format
+
+Diffusion models are emerging generative models with promising performance. They inject noise into training data progressively in forward process, and then remove noise from perturbed data iteratively in reverse process. The reverse process is for sample generation and therefore is also called sampling process.
+Typically, sampling process requires hundreds to thousands of steps, which is very slow and not applicable to time-sensitive scenario. Several prior works have made efforts to speed up the sampling process for efficiency. And in those efficiency-focused works, the main goal is to use fewer steps in sampling trajectory.
+However, in most cases, fewer sampling steps are achieved at the expense of sampling quality. In this work, it proposes a practical post-hoc method to improve the sampling quality: given a predefined trajectory, it searches for a new trajectory with the same step count but generates better result.
+During trajectory optimization, it focuses on the prediction error of diffusion model with a novel variance-reduction guidance (VRG). VRG reduces the impact of prediction error by optimizing the step size in sampling trajectory, and consequently improves the sampling quality.
+VRG is model-agnostic and training-free. It is suitable for continuous-time and discrete-time sampling process, and also applicable to conditional and unconditional generation. Experiments are conducted on state-of-the-art works, and the result comparison demonstrates that VRG can improve sampling quality significantly.

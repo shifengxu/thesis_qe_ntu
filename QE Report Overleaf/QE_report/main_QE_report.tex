@@ -1,0 +1,143 @@
+% ------------------------------------------------------------
+% This latex template is based on the version created by Xiao Xiong (NTU).
+% Compile main_QE_report.tex to generate the QE report.
+%
+% Author: Tan Zheng Hui Ernest, NTU, Singapore
+% Date: 8 Apr 2020
+% ------------------------------------------------------------
+
+
+% \input{setting}     % Input Global settings
+% 1. Define your report format here
+\documentclass[12pt,a4paper,twoside]{report}
+
+% 2. Specify the packages to be included
+\usepackage{amssymb,amsmath,epsfig,fancyheadings,cite}
+
+\oddsidemargin  +0.10in %
+\evensidemargin +0.00in %
+\topmargin      +0.15in %
+\textheight     +8.50in %
+\textwidth      +6.25in %
+
+\pagestyle{plain}
+
+\font\Bold=cmbx10 scaled \magstep3
+\def\EndOfProof{\nolinebreak\ \hfill\rule{1.5mm}{2.7mm}}
+\def\endOfProof{\ \hfill\rule{1.5mm}{2.7mm}}
+\def\proof{\noindent \textbf{Proof:}\quad}
+
+\newcounter{theorem}
+\newtheorem{theorem}{Theorem}
+\renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}
+
+\newcounter{lemma}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\thelemma}{\thechapter.\arabic{lemma}}
+
+\newcounter{corollary}
+\newtheorem{corollary}{Corollary}
+\renewcommand{\thecorollary}{\thechapter.\arabic{corollary}}
+
+\newcounter{definition}
+\newtheorem{definition}{Definition}
+\renewcommand{\thedefinition}{\thechapter.\arabic{definition}}
+\renewcommand{\bibname}{References}
+
+% Define some new macros
+%\def\addnotation #1: #2#3{$#1$\indent \parbox{5in}{#2 \dotfill  \pageref{#3}}}
+\def\addnotation #1: #2#3{$#1$ & #2 & \pageref{#3}}
+\def\newnot#1{\label{#1}}
+
+\usepackage{amsmath}
+\usepackage[cmintegrals]{newtxmath}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\begin{document}    % Start of the text
+
+% -------------------------------------------------------------------------------- %
+% --------------------------- Part I. Front Matters ------------------------------ %
+% -------------------------------------------------------------------------------- %
+\input{fm1-cover.tex}       % Input the Cover page
+
+\setlength{\baselineskip}{20pt plus 1pt minus 1pt} % Use 1-1/2 spacing for whole document
+\pagenumbering{roman}   % Use small roman digits for the page number of front matters
+
+\input{fm2-abstract.tex}    % Input the abstract and acknowledgement
+\input{fm3-ack.tex}
+
+\setcounter{secnumdepth}{3} % section numbering depth
+\setcounter{tocdepth}{4}    % count to the depth of sections
+\tableofcontents            % table of contents appears here
+
+\newpage
+\addcontentsline{toc}{section}{\numberline{}\hspace{-.35in}{\bf List of Figures}}
+\listoffigures              % list of figures appears here
+
+\newpage
+\addcontentsline{toc}{section}{\numberline{}\hspace{-.35in}{\bf List of Tables}}
+\listoftables              % list of tables appears here
+
+% \newpage
+% \addcontentsline{toc}{section}{\numberline{}\hspace{-.35in}{\bf List of Abbreviations}}
+% \input{fm4-abbrev.tex}      % Input the list of abbreviations and notations
+
+% \newpage
+% \addcontentsline{toc}{section}{\numberline{}\hspace{-.35in}{\bf List of Publications}}
+% \include{fm6-publication}
+
+
+
+
+% -------------------------------------------------------------------------------- %
+% --------------------------- Part II.  The Body ---- ---------------------------- %
+% -------------------------------------------------------------------------------- %
+\addtolength{\headheight}{3pt}
+\pagestyle{fancy}
+% \setlength{\headrulewidth}{0.1pt}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter. #1}{}}
+\lhead{\fancyplain{}{\bfseries\footnotesize\sc\leftmark}} \rhead{}
+\addtolength{\headsep}{-0.1in}
+\cfoot{\fancyplain{}{\bfseries\rm\thepage}}
+\pagenumbering {arabic}     % Use arabic number for the page number of main body
+
+\include{ch1-intro}         % Include the chapters
+\include{ch2-literature_review}
+% \include{ch3-efficiency_improvements}
+% \include{ch4-HBD_ACS}
+% \include{ch5-conclu}
+
+
+
+
+
+% -------------------------------------------------------------------------------- %
+% --------------------------- Part III. The Back Matters ------------------------- %
+% -------------------------------------------------------------------------------- %
+\appendix
+\include{bm1-appendix}      % Appendix and Publications
+
+% Include the references
+\newpage
+\addcontentsline{toc}{chapter}{References}
+%\bibliographystyle{ieeetr}      % Use the IEEE bibiography style
+%\bibliography{xiao_macro,xiao}  % Include the BibTex files
+
+
+%\newpage
+\bibliographystyle{IEEEtran}\scriptsize
+\bibliography{IEEEabrv,ref}
+
+
+
+
+
+\end{document}      % End of the text
+
+
+
+% ------------------
+% End of the File
+% ------------------
